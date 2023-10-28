@@ -1,6 +1,7 @@
 import type { AppProps } from "next/app";
 import { ThirdwebProvider } from "@thirdweb-dev/react";
 import "../styles/globals.css";
+import Image from "next/image";
 
 // This is the chain your dApp will work on.
 // Change this to the chain your app is built for.
@@ -13,7 +14,17 @@ function MyApp({ Component, pageProps }: AppProps) {
       clientId={process.env.NEXT_PUBLIC_TEMPLATE_CLIENT_ID}
       activeChain={activeChain}
     >
-      <Component {...pageProps} />
+      <div className="bg-darkPurple h-screen w-screen">
+        <Component {...pageProps} />
+        <div className="fixed z-[2]">
+          <Image
+            width={1755}
+            height={1755}
+            src="./images/circle.svg"
+            alt=""
+          ></Image>
+        </div>
+      </div>
     </ThirdwebProvider>
   );
 }
