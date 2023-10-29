@@ -15,21 +15,17 @@ const mockData: TrustFundProps = {
   walletId: "hey",
 }
 
-const Dashboard: NextPage = () => {
+const CreateTrust: NextPage = () => {
   return (
     <div className="p-10">
       <div className="grid grid-cols-7 gap-4">
         <div className="col-span-5">
-          <div className="text-beige font-krona text-5xl mb-5">Manage Treasury</div>
+          <div className="text-beige font-krona text-5xl mb-5">Create a New Trust</div>
 
           <div className="bg-darkerPurple blend-color-burn bg-opacity-80 rounded-lg p-4">
-            <div className="text-beige font-krona text-md mb-2">Your Funds</div>
             <div className="grid grid-cols-4 gap-4">
               <div className="col-span-2 flex flex-col justify-around gap-4">
-                {/* Show the funds the user is a benificiary of */}
-                {[1, 2, 3].map((item) => (
-                  <TrustFund {...mockData} key={item} />
-                ))}
+                <NewTrustForm />
               </div>
               <div className="col-span-2">
                 <BurnRate />
@@ -45,4 +41,4 @@ const Dashboard: NextPage = () => {
   )
 }
 
-export default Dashboard
+export default CreateTrust
