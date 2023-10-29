@@ -1,57 +1,53 @@
-import { ConnectWallet } from "@thirdweb-dev/react";
-import styles from "../styles/Home.module.css";
-import Image from "next/image";
-import { NextPage } from "next";
-import Link from "next/link";
-import TrustFund from "../../components/TrustFund";
-import { TrustFundProps } from "../../components/TrustFund";
-import BurnRate from "../../components/BurnRate";
+import { ConnectWallet } from "@thirdweb-dev/react"
+import styles from "../styles/Home.module.css"
+import Image from "next/image"
+import { NextPage } from "next"
+import Link from "next/link"
+import TrustFund from "../../components/TrustFund"
+import { TrustFundProps } from "../../components/TrustFund"
+import BurnRate from "../../components/BurnRate"
 
 const mockData: TrustFundProps = {
   recipientName: "Test",
   ethAmount: 2,
   dateCreated: "10-22-2-2",
   walletId: "hey",
-};
+}
 
 const Dashboard: NextPage = () => {
   return (
     <div className="p-10">
       <div className="grid grid-cols-7 gap-4">
-        <div className="col-span-5 bg-gray-500 bg-opacity-50">
-          <div className="text-beige font-krona text-5xl">Manage Treasury</div>
+        <div className="col-span-5">
+          <div className="text-beige font-krona text-5xl mb-5">Manage Treasury</div>
 
-          <div className="text-beige font-krona text-md">Your Funds</div>
-          <div className="grid grid-cols-4 gap-4">
-            <div className="col-span-2">
-              {/* Show the funds the user is a benificiary of */}
-              {[1, 2, 3].map((item) => (
-                <TrustFund {...mockData} key={item} />
-              ))}
-            </div>
-            <div className="col-span-2">
-              <div className="text-beige font-krona text-md">Burn Rate</div>
-              <BurnRate />
-              <div>
-                <div className="text-beige font-krona text-md">
-                  Total Value Locked: $6.33
-                </div>
-                <div className="text-beige font-krona text-md">
-                  Total Value Locked: $6.33
-                </div>
-                <div className="text-beige font-krona text-md">
-                  Total Value Locked: $6.33
+          <div className="bg-darkerPurple blend-color-burn bg-opacity-80 rounded-lg p-4">
+            <div className="text-beige font-krona text-md mb-2">Your Funds</div>
+            <div className="grid grid-cols-4 gap-4">
+              <div className="col-span-2 flex flex-col justify-around gap-4">
+                {/* Show the funds the user is a benificiary of */}
+                {[1, 2, 3].map((item) => (
+                  <TrustFund {...mockData} key={item} />
+                ))}
+              </div>
+              <div className="col-span-2 border border-beige bg-darkerPurple bg-opacity-80 rounded-md p-2">
+                <div className="text-beige font-krona text-xl">Burn Rate</div>
+                <BurnRate />
+                <div>
+                  <div className="text-beige font-krona text-md">Total Value Locked: $6.33</div>
+                  <div className="text-beige font-krona text-md">Total Value Locked: $6.33</div>
+                  <div className="text-beige font-krona text-md">Total Value Locked: $6.33</div>
                 </div>
               </div>
             </div>
           </div>
         </div>
-        <div className="col-span-2">
+        <div className="col-span-2 bg-darkerPurple bg-opacity-80 rounded-lg p-2">
           <div className="text-beige font-krona text-md">Activity</div>
         </div>
       </div>
     </div>
-  );
+  )
 
   //   return (
   //     <div className="flex h-screen bg-gray-100">
@@ -363,6 +359,6 @@ const Dashboard: NextPage = () => {
   //       </div>
   //     </div>
   //   );
-};
+}
 
-export default Dashboard;
+export default Dashboard

@@ -14,6 +14,7 @@ module.exports = {
       beige: "#D9D9D9",
       lightPurple: "#5F15D9",
       circleBg: "#777777",
+      darkerPurple: "#2D1A2E",
     },
     fontFamily: {
       krona: ["Krona One", "sans-serif"],
