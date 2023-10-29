@@ -24,14 +24,14 @@ const Dashboard: NextPage = () => {
 
           <div className="bg-darkerPurple blend-color-burn bg-opacity-80 rounded-lg p-4">
             <div className="text-beige font-krona text-md mb-2">Your Funds</div>
-            <div className="grid grid-cols-4 gap-4">
+            <div className="grid grid-cols-5 gap-4">
               <div className="col-span-2 flex flex-col justify-around gap-4">
                 {/* Show the funds the user is a benificiary of */}
-                {[1, 2, 3].map((item) => (
+                {[1, 2, 3, 4].map((item) => (
                   <TrustFund {...mockData} key={item} />
                 ))}
               </div>
-              <div className="col-span-2">
+              <div className="col-span-3">
                 <BurnRate />
               </div>
             </div>
