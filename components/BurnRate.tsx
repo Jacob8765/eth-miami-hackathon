@@ -5,7 +5,7 @@ interface BurnRateProps {}
 
 const BurnRate = ({}: BurnRateProps) => {
   return (
-    <div className="border border-beige bg-darkerPurple bg-opacity-80 rounded-md p-2">
+    <div className="border border-beige bg-darkerPurple rounded-md p-2">
       <div className="text-beige font-krona text-xl">Burn Rate</div>
       <div className="p-2">
         <Chart />

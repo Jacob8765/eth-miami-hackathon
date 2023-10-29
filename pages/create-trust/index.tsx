@@ -13,6 +13,7 @@ const mockData: TrustFundProps = {
   ethAmount: 2,
   dateCreated: "10-22-2-2",
   walletId: "hey",
+  active: true,
 }
 
 const CreateTrust: NextPage = () => {

@@ -5,9 +5,10 @@ export interface TrustFundProps {
   ethAmount: number
   dateCreated: string
   walletId: string
+  active: boolean
 }
 
-const TrustFund = ({ recipientName, ethAmount, dateCreated, walletId }: TrustFundProps) => {
+const TrustFund = ({ recipientName, ethAmount, dateCreated, walletId, active }: TrustFundProps) => {
   return (
     <div className="rounded-lg bg-beige p-3">
       <div className="flex flex-row justify-between items-center">
@@ -16,7 +17,7 @@ const TrustFund = ({ recipientName, ethAmount, dateCreated, walletId }: TrustFun
           <p className="text-2xl font-nats">{ethAmount} ETH</p>
           <p className="text-md font-nats">Date Created: {dateCreated}</p>
         </div>
-        <div className="rounded-lg border border-[#5F15D9] bg-[#5D3D92] shadow-md px-5 py-2">
+        <div className={`rounded-lg border border-[#5F15D9]  ${active ? "bg-darkPurple" : "bg-[#5D3D92]"} shadow-md px-5 py-2`}>
           <h3 className="text-beige text-center font-nats text-xl">View Details</h3>
         </div>
       </div>
