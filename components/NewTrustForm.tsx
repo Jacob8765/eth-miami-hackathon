@@ -2,27 +2,30 @@ import { useForm, SubmitHandler } from "react-hook-form"
 import { useEffect } from "react"
 
 export type IFormValues = {
-  amount: number
+  vested: number
   recipientAddress: string
-  payoutInterval: string
-  payoutFrequency: number
+  interval: number
+  timePeriod: string
+  payoutAmount: number
 }
 
 const defaultValues: IFormValues = {
-  amount: 0,
+  vested: 0,
   recipientAddress: "",
-  payoutInterval: "week",
-  payoutFrequency: 1,
+  timePeriod: "Week",
+  interval: 1,
+  payoutAmount: 0,
 }
 
-const NewTrustForm = () => {
+const NewTrustForm = ({ setData }: { setData: (data: IFormValues) => void }) => {
   const { control, register, handleSubmit, watch } = useForm<IFormValues>({ defaultValues }) // Specify the type for useForm
 
   const onSubmit: SubmitHandler<IFormValues> = (data) => {
     console.log(data)
+    setData(data)
   }
 
-  const payoutInterval = watch("payoutInterval")
+  const payoutInterval = watch("timePeriod")
 
   return (
     <>
@@ -30,26 +33,32 @@ const NewTrustForm = () => {
         <label htmlFor="name" className="text-lg text-beige">
           Amount (ETH)
         </label>
-        <input type="text" {...register("amount")} className="border rounded p-2 w-full mb-2" placeholder="1.0000" />
+        <input type="text" {...register("vested")} className="border rounded p-2 w-full mb-2" placeholder="1.0000" />
 
         <label htmlFor="recipientAddress" className="text-lg text-beige">
           Recipient Address
         </label>
         <input type="text" {...register("recipientAddress")} className="border rounded p-2 w-full mb-2" placeholder="Recipient Address" />
 
+        <label htmlFor="payoutAmount" className="text-lg text-beige">
+          Payout Amount
+        </label>
+        <input type="text" {...register("payoutAmount")} className="border rounded p-2 w-full mb-2" placeholder="Payout Amount" />
+
         <label htmlFor="payoutInterval" className="text-lg text-beige">
           Payout Interval
         </label>
-        <select {...register("payoutInterval")} className="border rounded p-2 w-full mb-2">
-          <option value="week">Week</option>
-          <option value="month">Month</option>
+        <select {...register("timePeriod")} className="border rounded p-2 w-full mb-2">
+          {["Day", "Week", "Month", "Year"].map((item) => (
+            <option value={item}>{item}</option>
+          ))}
           {/* Add more options as needed for different payout intervals */}
         </select>
 
-        <label htmlFor="payoutFrequency" className="text-lg text-beige">
+        <label htmlFor="interval" className="text-lg text-beige">
           Payout Frequency
         </label>
-        <select {...register("payoutFrequency")} className="border rounded p-2 w-full">
+        <select {...register("interval")} className="border rounded p-2 w-full">
           {
             // Generate the options based on the payout interval
             // For example, if the payout interval is week, then generate 1-7

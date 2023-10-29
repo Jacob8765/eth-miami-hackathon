@@ -33,7 +33,7 @@ const Dashboard: NextPage = () => {
                 ))}
               </div>
               <div className="col-span-3">
-                <BurnRate />
+                <BurnRate timePeriod="Day" vested={200} payoutAmount={10} interval={2} />
               </div>
             </div>
           </div>
