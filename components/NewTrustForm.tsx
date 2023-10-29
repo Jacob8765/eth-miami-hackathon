@@ -8,12 +8,21 @@ export type IFormValues = {
   payoutFrequency: number
 }
 
+const defaultValues: IFormValues = {
+  amount: 0,
+  recipientAddress: "",
+  payoutInterval: "week",
+  payoutFrequency: 1,
+}
+
 const NewTrustForm = () => {
-  const { control, register, handleSubmit } = useForm<IFormValues>() // Specify the type for useForm
+  const { control, register, handleSubmit, watch } = useForm<IFormValues>({ defaultValues }) // Specify the type for useForm
 
   const onSubmit: SubmitHandler<IFormValues> = (data) => {
     console.log(data)
   }
+
+  const payoutInterval = watch("payoutInterval")
 
   return (
     <>
@@ -41,9 +50,16 @@ const NewTrustForm = () => {
           Payout Frequency
         </label>
         <select {...register("payoutFrequency")} className="border rounded p-2 w-full">
-          <option value="1">Every 1</option>
-          <option value="2">Every 2</option>
-          <option value="3">Every 3</option>
+          {
+            // Generate the options based on the payout interval
+            // For example, if the payout interval is week, then generate 1-7
+            // If the payout interval is month, then generate 1-30
+            [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12].map((item) => (
+              <option value={item}>
+                Every {item} {payoutInterval}
+              </option>
+            ))
+          }
           {/* Add more options for different payout frequencies */}
         </select>
 
